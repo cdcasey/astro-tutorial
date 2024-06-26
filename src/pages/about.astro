@@ -1,21 +1,59 @@
 ---
-const pageTitle = "About Me"
+const pageTitle = "About Me";
+
+const identity = {
+  firstName: "Sarah",
+  country: "Canada",
+  occupation: "Technical Writer",
+  hobbies: ["photography", "birdwatching", "baseball"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
 ---
 
 <html lang="en">
-<head>
+  <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
-</head>
-<body>
-<a href="/">Home</a>
-<a href="/about/">About</a>
-<a href="/blog/">Blog</a>
-<h1>{pageTitle}</h1>
-<h2>This is the site</h2>
-<p>This is a <s>dumb</s> genius tutorial</p>
-</body>
+  </head>
+  <body>
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/blog/">Blog</a>
+    <h1>{pageTitle}</h1>
+    <h2>This is the site</h2>
+    <p>This is a <s>dumb</s> genius tutorial</p>
+    <p>Fun facts:</p>
+    <ul>
+      <li>name {identity.firstName}</li>
+      <li>Living in {identity.country} as a {identity.occupation}</li>
+      <li>
+        My hobbies are:
+        <ul>
+          {identity.hobbies.map((hobby) => <li>{hobby}</li>)}
+        </ul>
+      </li>
+    </ul>
+    <p>My skills are:</p>
+    <ul>
+      {skills.map((skill) => <li>{skill}</li>)}
+    </ul>
+
+    {happy && <p>I am happy to be learning Astro!</p>}
+    {finished && <p>I finished this tutorial!</p>}
+    {
+      goal === 3 ? (
+        <p>My goal is to finish in 3 days.</p>
+      ) : (
+        <p>My goal is not 3 days.</p>
+      )
+    }
+  </body>
 </html>
