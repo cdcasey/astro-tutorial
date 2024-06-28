@@ -4,8 +4,9 @@ import BlogPost from "../components/BlogPost.astro";
 
 import "../styles/global.css";
 
-const allPosts = await Astro.glob("./posts/*.md");
-console.log({ allPosts });
+const allPosts = await Astro.glob("./posts/**/*.md");
+const postsSortedByDate = allPosts.sort((a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter.pubDate));
+
 const pageTitle = "Learning blog";
 ---
 
@@ -14,7 +15,7 @@ const pageTitle = "Learning blog";
   <p>This is a <s>dumb</s> genius tutorial</p>
   <ul>
     {
-      allPosts.map((post) => (
+      postsSortedByDate.map((post) => (
         <BlogPost url={post.url} title={post.frontmatter.title} />
       ))
     }

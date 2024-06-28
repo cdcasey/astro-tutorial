@@ -3,7 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import TagLinks from "../../components/TagLinks.astro";
 // import BlogPost from "../../components/BlogPost.astro";
 
-const allPosts = await Astro.glob("../posts/*.md");
+const allPosts = await Astro.glob("../posts/**/*.md");
 const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
 ---
 
