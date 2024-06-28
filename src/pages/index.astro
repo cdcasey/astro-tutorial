@@ -1,11 +1,24 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Greeting from "@/components/Greeting";
 
 import "../styles/global.css";
 
 const pageTitle = "Home Page";
 ---
 
+<style>
+  .greeting {
+    margin: 1rem 0;
+  }
+</style>
+
 <BaseLayout pageTitle={pageTitle}>
   <h2>mo stuff</h2>
+
+  <Greeting
+    class="greeting"
+    client:load
+    messages={["Hi", "Hello", "Howdy", "Hey there"]}
+  />
 </BaseLayout>
